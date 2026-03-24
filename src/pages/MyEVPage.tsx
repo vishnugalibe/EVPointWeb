@@ -5,7 +5,14 @@ import PageHeader from "@/components/PageHeader";
 import BottomNav from "@/components/BottomNav";
 import evScooter from "@/assets/ev-scooter.png";
 
-const menuItems = ["Profile", "Setting", "Notification", "Help", "Franchise", "EV Tips"];
+const menuItems = [
+  { label: "Profile", path: "/profile" },
+  { label: "Setting", path: "/settings" },
+  { label: "Notification", path: null },
+  { label: "Help", path: "/help" },
+  { label: "Franchise", path: "/franchise" },
+  { label: "EV Tips", path: "/ev-tips" },
+];
 
 const MyEVPage: React.FC = () => {
   const navigate = useNavigate();
@@ -14,14 +21,12 @@ const MyEVPage: React.FC = () => {
     <div className="min-h-screen bg-background pb-20">
       <PageHeader title="My EV" />
 
-      {/* Vehicle Card */}
       <div className="mx-4 mb-6 animate-fade-in-up">
         <div className="bg-primary rounded-2xl p-6 border-2 border-border">
           <div className="flex justify-center mb-3">
             <img src={evScooter} alt="OLA S1 Pro" className="w-32 h-auto" />
           </div>
           <h2 className="text-center font-bold text-lg text-foreground mb-4">OLA S1 Pro</h2>
-
           <div className="grid grid-cols-3 gap-2 mb-2">
             <div className="border-2 border-border rounded-xl p-3 text-center">
               <span className="text-xl font-bold text-foreground">89%</span>
@@ -53,20 +58,18 @@ const MyEVPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Menu */}
       <div className="mx-4 space-y-2 mb-6">
         {menuItems.map((item, i) => (
           <button
-            key={item}
-            onClick={() => item === "Franchise" ? navigate("/franchise") : undefined}
+            key={item.label}
+            onClick={() => item.path && navigate(item.path)}
             className={`animate-fade-in-up stagger-${Math.min(i + 1, 6)} w-full text-left px-5 py-3.5 bg-primary rounded-xl font-semibold text-foreground border-2 border-border transition-all active:scale-[0.98]`}
           >
-            {item}
+            {item.label}
           </button>
         ))}
       </div>
 
-      {/* Logout */}
       <div className="mx-4 mb-6 animate-fade-in-up">
         <button
           onClick={() => navigate("/")}

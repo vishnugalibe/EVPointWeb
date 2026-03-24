@@ -13,18 +13,12 @@ const BookChargingPage: React.FC = () => {
     name: "", location: "", evModel: "", station: "", chargingType: "", date: "", time: "", amount: "",
   });
   const [paymentMethod, setPaymentMethod] = useState("Card");
-
   const update = (key: string, val: string) => setForm((f) => ({ ...f, [key]: val }));
-
-  const handleSubmit = () => {
-    navigate("/slot-booked");
-  };
 
   return (
     <div className="min-h-screen bg-background pb-6">
       <PageHeader title="Charging Slots near you" />
 
-      {/* Biker Details */}
       <div className="mx-4 mb-4 animate-fade-in-up">
         <div className="bg-primary/30 rounded-2xl p-4 border-2 border-border">
           <h3 className="ev-section-label mb-3 px-2 py-1 rounded-lg inline-block">Biker Details</h3>
@@ -39,7 +33,6 @@ const BookChargingPage: React.FC = () => {
         </div>
       </div>
 
-      {/* EV Details */}
       <div className="mx-4 mb-4 animate-fade-in-up stagger-1">
         <div className="bg-primary/10 rounded-2xl p-4 border-2 border-border">
           <h3 className="ev-section-label mb-3 px-2 py-1 rounded-lg inline-block">EV Details</h3>
@@ -53,25 +46,18 @@ const BookChargingPage: React.FC = () => {
             </select>
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground pointer-events-none" />
           </div>
-          <input className="ev-input w-full mb-2" type="date" placeholder="Enter EV booking Date" value={form.date} onChange={(e) => update("date", e.target.value)} />
-          <input className="ev-input w-full" type="time" placeholder="Enter EV booking time" value={form.time} onChange={(e) => update("time", e.target.value)} />
+          <input className="ev-input w-full mb-2" type="date" value={form.date} onChange={(e) => update("date", e.target.value)} />
+          <input className="ev-input w-full" type="time" value={form.time} onChange={(e) => update("time", e.target.value)} />
         </div>
       </div>
 
-      {/* Payment */}
       <div className="mx-4 mb-6 animate-fade-in-up stagger-2">
         <div className="bg-primary/30 rounded-2xl p-4 border-2 border-border">
           <h3 className="ev-section-label mb-3 px-2 py-1 rounded-lg inline-block">Payment Details</h3>
-          <input className="ev-input w-full mb-3" placeholder="Enter EV booking time" value={form.amount} onChange={(e) => update("amount", e.target.value)} />
+          <input className="ev-input w-full mb-3" placeholder="Enter amount" value={form.amount} onChange={(e) => update("amount", e.target.value)} />
           <div className="flex gap-2">
             {["Card", "Cash", "UPI"].map((m) => (
-              <button
-                key={m}
-                onClick={() => setPaymentMethod(m)}
-                className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-all ${
-                  paymentMethod === m ? "border-ev-green-dark bg-primary text-foreground" : "border-border bg-background text-muted-foreground"
-                }`}
-              >
+              <button key={m} onClick={() => setPaymentMethod(m)} className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-all ${paymentMethod === m ? "border-ev-green-dark bg-primary text-foreground" : "border-border bg-background text-muted-foreground"}`}>
                 {m}
               </button>
             ))}
@@ -80,7 +66,7 @@ const BookChargingPage: React.FC = () => {
       </div>
 
       <div className="mx-4 animate-fade-in-up stagger-3">
-        <button onClick={handleSubmit} className="w-full py-4 rounded-2xl border-2 border-foreground font-bold text-lg text-foreground bg-background transition-all active:scale-97">
+        <button onClick={() => navigate("/slot-booked")} className="ev-btn-dark w-full">
           Book Charging Station
         </button>
       </div>

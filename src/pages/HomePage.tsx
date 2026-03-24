@@ -15,10 +15,9 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-ev-green-light pb-20">
       <PageHeader title="EV Point" />
 
-      {/* Map placeholder */}
       <div className="mx-4 rounded-2xl overflow-hidden border-2 border-border mb-4 animate-fade-in-up">
         <div className="w-full h-48 bg-primary/30 flex items-center justify-center">
           <iframe
@@ -31,17 +30,15 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Book CTA */}
       <div className="mx-4 mb-4 animate-fade-in-up stagger-1">
         <button
           onClick={() => navigate("/book-charging")}
-          className="w-full py-4 rounded-2xl bg-primary font-bold text-xl text-foreground border-2 border-border transition-all active:scale-97"
+          className="ev-btn-dark w-full py-4 text-xl"
         >
           Book Charging Slots
         </button>
       </div>
 
-      {/* Stations List */}
       <div className="mx-4">
         <h2 className="text-xl font-bold text-foreground mb-3 animate-fade-in-up stagger-2">Charging Slots near you</h2>
         <div className="space-y-3">
@@ -49,7 +46,7 @@ const HomePage: React.FC = () => {
             <div
               key={s.name}
               onClick={() => navigate("/book-charging")}
-              className={`animate-fade-in-up stagger-${i + 2} bg-primary/20 border-2 border-border rounded-2xl p-4 cursor-pointer transition-all hover:shadow-md active:scale-[0.98]`}
+              className={`animate-fade-in-up stagger-${Math.min(i + 2, 6)} bg-primary/20 border-2 border-border rounded-2xl p-4 cursor-pointer transition-all hover:shadow-md active:scale-[0.98]`}
             >
               <div className="flex items-center gap-1 mb-2">
                 <MapPin className="w-4 h-4 text-ev-green-dark" />

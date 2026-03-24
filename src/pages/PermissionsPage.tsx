@@ -24,7 +24,7 @@ const PermissionsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-primary flex flex-col items-center px-6 pt-8 pb-12">
       <div className="flex items-center gap-3 mb-6 animate-fade-in-up">
-        <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center shadow-lg">
+        <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center shadow-lg cursor-pointer" onClick={() => navigate("/otp")}>
           <img src={evChargerIcon} alt="EV Point" className="w-8 h-8 object-contain" />
         </div>
         <h1 className="text-2xl font-extrabold text-foreground">EV Point</h1>
@@ -51,9 +51,9 @@ const PermissionsPage: React.FC = () => {
 
       <button
         onClick={() => navigate("/home")}
-        className="w-full max-w-sm py-4 rounded-xl font-bold text-lg bg-accent text-accent-foreground border-2 border-foreground/20 mt-8 transition-all active:scale-97 animate-fade-in-up stagger-6"
+        className="ev-btn-dark w-full max-w-sm py-4 mt-8 animate-fade-in-up stagger-6"
       >
-        Accept
+        Accept Permissions
       </button>
     </div>
   );
