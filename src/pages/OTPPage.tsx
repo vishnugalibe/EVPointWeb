@@ -9,7 +9,8 @@ const OTPPage: React.FC = () => {
 
   const handleKeyPress = (digit: string) => {
     if (digit === "X") {
-      const lastFilled = otp.findLastIndex((d) => d !== "");
+      let lastFilled = -1;
+      for (let j = otp.length - 1; j >= 0; j--) { if (otp[j] !== "") { lastFilled = j; break; } }
       if (lastFilled >= 0) {
         const newOtp = [...otp];
         newOtp[lastFilled] = "";
