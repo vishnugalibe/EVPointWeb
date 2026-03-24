@@ -31,7 +31,7 @@ const LoginPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-primary flex flex-col">
       <div className="flex items-center gap-3 p-6 animate-fade-in-up">
-        <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center shadow-lg">
+        <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center shadow-lg cursor-pointer" onClick={() => navigate("/")}>
           <img src={evChargerIcon} alt="EV Point" className="w-7 h-7 object-contain" />
         </div>
         <h1 className="text-2xl font-extrabold text-foreground">EV Point</h1>

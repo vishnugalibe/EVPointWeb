@@ -49,6 +49,7 @@ export default {
         },
         "ev-green": "hsl(var(--ev-green))",
         "ev-green-dark": "hsl(var(--ev-green-dark))",
+        "ev-green-light": "hsl(var(--ev-green-light))",
         "ev-charger": "hsl(var(--ev-charger))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

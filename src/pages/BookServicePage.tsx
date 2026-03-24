@@ -64,7 +64,7 @@ const BookServicePage: React.FC = () => {
       </div>
 
       <div className="mx-4 animate-fade-in-up stagger-3">
-        <button onClick={() => navigate("/slot-booked")} className="w-full py-4 rounded-2xl border-2 border-foreground font-bold text-lg text-foreground bg-background transition-all active:scale-97">
+        <button onClick={() => navigate("/slot-booked")} className="ev-btn-dark w-full">
           Book Service Center
         </button>
       </div>
